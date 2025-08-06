@@ -7,7 +7,7 @@ export class Auth {
   password: string;
   @Prop()
   username: string;
-  @Prop({ default: 5 })
+  @Prop({ default: 1 })
   credits: number;
   @Prop()
   secureURL: string;
