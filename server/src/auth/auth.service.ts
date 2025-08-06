@@ -7,8 +7,7 @@ import * as bcrypt from 'bcrypt';
 import { LoginDto } from './dto/login.dto';
 import { JwtService } from '@nestjs/jwt';
 import { MailService } from 'src/mail/mail.service';
-import { customAlphabet } from 'nanoid';
-const nanoid = customAlphabet('1234567890', 6);
+
 @Injectable()
 export class AuthService {
   constructor(
@@ -30,6 +29,8 @@ export class AuthService {
     body.password = hashedPassword;
     const newUser = new this.authModel(body);
     await newUser.save();
+    const { customAlphabet } = await import('nanoid');
+    const nanoid = customAlphabet('1234567890', 6);
     const code = nanoid();
     await this.mailService.sendWelcomeEmail(body.email, body.username, code);
     newUser.code = code;
