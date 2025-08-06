@@ -1,4 +1,4 @@
-import { HttpException, Injectable, Post } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Auth } from './auth.model';
 import { Model } from 'mongoose';
@@ -99,7 +99,7 @@ export class AuthService {
       const newUser = new this.authModel({
         email: _json.email,
         secureURL: _json.picture,
-        username: _json.name,
+        username: _json.name.split(' ')[0],
         isVerified: true,
       });
       token = this.jwtService.sign({
@@ -113,7 +113,7 @@ export class AuthService {
     token = this.jwtService.sign({ userId: user._id, email: user.email });
     const userUpdate = await this.authModel.findOneAndUpdate(
       { email: _json.email },
-      { token },
+      { token, secureURL: _json.picture, username: _json.name.split(' ')[0] },
       { new: true },
     );
     return userUpdate;
@@ -121,6 +121,7 @@ export class AuthService {
   //MARK: refreshToken
   async refreshToken(token: string) {
     const user = await this.authModel.findOne({ token });
+    console.log(token);
     if (!user) {
       throw new HttpException('Invalid token', 401);
     }

@@ -52,9 +52,7 @@ export const DrawerOpt = ({ drawerRef }) => {
   }, [error, isLoading]);
   return (
     <Drawer>
-      <DrawerTrigger ref={drawerRef} className="text-blue-500 hover:underline">
-        Need help?
-      </DrawerTrigger>
+      <DrawerTrigger ref={drawerRef}></DrawerTrigger>
       <DrawerContent className="min-h-1/2">
         <DrawerHeader>
           <DrawerTitle>Confirm your Email</DrawerTitle>

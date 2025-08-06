@@ -26,6 +26,6 @@ import { MailService } from 'src/mail/mail.service';
   ],
   controllers: [AuthController],
   providers: [AuthService, LocalStrategy, GoogleStrategy, MailService],
-  exports: [AuthService, JwtModule],
+  exports: [AuthService, JwtModule, MongooseModule],
 })
 export class AuthModule {}

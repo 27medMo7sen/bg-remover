@@ -22,7 +22,9 @@ export class ImageController {
     @UploadedFile() file: Express.Multer.File,
     @Req() req: any,
   ) {
-    console.log(req.user);
+    if (!file) {
+      throw new Error('No file uploaded');
+    }
     return await this.imageService.handleImageProcessing({
       ...file,
       user: req.user,

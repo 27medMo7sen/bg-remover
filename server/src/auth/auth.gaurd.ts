@@ -28,8 +28,8 @@ export class AuthGuard implements CanActivate {
       const decoded = this.jwtService.verify(token);
       console.log(decoded);
     } catch (error) {
-      console.log(error);
-      if (JSON.stringify(error).startsWith('TokenExpiredError')) {
+      console.log(JSON.parse(JSON.stringify(error)));
+      if (JSON.parse(JSON.stringify(error))['message'] === 'jwt expired') {
         throw new HttpException('Token expired', 402);
       }
       throw new HttpException('Invalid token', 401);
