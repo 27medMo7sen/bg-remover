@@ -16,7 +16,8 @@ export const useHttp = () => {
     }
     axios.defaults.headers.post["Content-Type"] = "application/json";
     axios.defaults.baseURL =
-      process.env.NEXT_PUBLIC_API_URL || "http://bg-remover-production-28c9.up.railway.app";
+      process.env.NEXT_PUBLIC_API_URL ||
+      "https://bg-remover-production-28c9.up.railway.app";
   }, []);
 
   const [isLoading, setIsLoading] = React.useState(false);
