@@ -16,7 +16,7 @@ export const useHttp = () => {
     }
     axios.defaults.headers.post["Content-Type"] = "application/json";
     axios.defaults.baseURL =
-      process.env.NEXT_PUBLIC_API_URL || "https://bg-remover-8fnb.vercel.app/";
+      process.env.NEXT_PUBLIC_API_URL || "https://bg-remover-361t.vercel.app/";
   }, []);
 
   const [isLoading, setIsLoading] = React.useState(false);
