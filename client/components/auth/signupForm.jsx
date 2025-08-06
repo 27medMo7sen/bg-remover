@@ -105,7 +105,7 @@ export default function SignupForm() {
         <div className="flex justify-center items-center">
           <Link
             variant="outline"
-            href="https://bg-remover-8fnb.vercel.app/auth/google"
+            href="https://bg-remover-production-28c9.up.railway.app/auth/google"
             className="bg-white w-full sm:w-fit hover:bg-gray-100 text-gray-800 font-semibold border-gray-300 flex items-center justify-center gap-2 p-2 sm:p-3 rounded-2xl cursor-pointer shadow-lg text-sm sm:text-base transition-colors"
           >
             <FaGoogle className="text-sm sm:text-base" />
