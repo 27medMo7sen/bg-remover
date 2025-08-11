@@ -5,6 +5,9 @@ import React from "react";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/png" href="/favicon.svg" />
+      </head>
       <body className="flex flex-col items-center min-h-screen bg-gray-900">
         <NextTopLoader
           color="#2299DD"
