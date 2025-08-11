@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import MainLoader from "../ui/mainLoader";
 import { setUser } from "@/lib/slices/authSlice";
 import { pushImage } from "@/lib/slices/gallerySlice";
-import { Button } from "../ui/button";
 import Link from "next/link";
 
 export const ImagesCard = () => {
@@ -15,9 +14,7 @@ export const ImagesCard = () => {
   const { post, isLoading, setIsLoading } = useHttp();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  const isUploading = useRef(false);
 
-  // Fetch file from URL and set it once
   useEffect(() => {
     if (uploadedImage) {
       fetch(uploadedImage)
@@ -32,7 +29,6 @@ export const ImagesCard = () => {
     }
   }, []);
 
-  // Upload file only once
   useEffect(() => {
     if (!file || isLoading) return;
 
