@@ -90,7 +90,7 @@ export const ImagesCard = () => {
             </div>
           ) : (
             processedImage && (
-              <Image
+              <img
                 src={processedImage}
                 alt="Processed"
                 className="w-full max-w-full h-auto rounded-lg shadow"
