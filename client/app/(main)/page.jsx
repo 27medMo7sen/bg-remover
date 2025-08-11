@@ -3,6 +3,7 @@ import { Explaination } from "@/components/home/explaination";
 import { ImageDrager } from "@/components/home/imageDrager";
 import { MainCard } from "@/components/home/mainCard";
 import { useSelector } from "react-redux";
+import React from "react";
 export default function Home() {
   const user = useSelector((state) => state.auth.user);
   console.log(user?.email);
