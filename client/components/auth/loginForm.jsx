@@ -14,7 +14,6 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "@/lib/slices/authSlice";
 
 export default function LoginForm() {
-
   const [showPassword, setShowPassword] = React.useState(false);
   const { post } = useHttp();
   const dispatch = useDispatch();
@@ -81,7 +80,7 @@ export default function LoginForm() {
         <div className="flex justify-center items-center">
           <Link
             variant="outline"
-            href="https://bg-remover-production-28c9.up.railway.app/auth/google"
+            href={`${process.env.NEXT_PUBLIC_SERVER_URL}/auth/google`}
             className="bg-white w-full sm:w-fit hover:bg-gray-100 text-gray-800 font-semibold border-gray-300 flex items-center justify-center gap-2 p-2 sm:p-3 rounded-2xl cursor-pointer shadow-lg text-sm sm:text-base transition-colors"
           >
             <FaGoogle className="text-sm sm:text-base" />
