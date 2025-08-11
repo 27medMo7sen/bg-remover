@@ -6,6 +6,9 @@ import { useSelector } from "react-redux";
 export default function Home() {
   const user = useSelector((state) => state.auth.user);
   console.log(user?.email);
+  React.useEffect(() => {
+    document.title = "Home Page";
+  }, []);
   return (
     <div>
       <MainCard />

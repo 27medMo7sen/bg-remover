@@ -1,4 +1,9 @@
+import { useEffect } from "react";
+
 const ProfilePage = () => {
+  useEffect(() => {
+    document.title = "Profile Page";
+  }, []);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <h1 className="text-2xl font-bold text-black">Profile Page</h1>

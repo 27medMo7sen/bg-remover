@@ -7,6 +7,9 @@ const ResultPage = () => {
   if (!uploadedImage) {
     redirect("/");
   }
+  React.useEffect(() => {
+    document.title = "Result Page";
+  }, []);
   return (
     <div>
       <ImagesCard />
