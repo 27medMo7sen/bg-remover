@@ -6,6 +6,7 @@ import MainLoader from "../ui/mainLoader";
 import { setUser } from "@/lib/slices/authSlice";
 import { pushImage } from "@/lib/slices/gallerySlice";
 import Link from "next/link";
+import Image from "next/image";
 
 export const ImagesCard = () => {
   const uploadedImage = useSelector((state) => state.gallery.uploadedImage);
@@ -89,7 +90,7 @@ export const ImagesCard = () => {
             </div>
           ) : (
             processedImage && (
-              <img
+              <Image
                 src={processedImage}
                 alt="Processed"
                 className="w-full max-w-full h-auto rounded-lg shadow"
