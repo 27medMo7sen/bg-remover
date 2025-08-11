@@ -18,10 +18,10 @@ export const GoogleFetching = () => {
         },
       });
       dispatch(setCredentials({ user, token: user.token }));
+      redirect("/");
     };
     fetchUser();
-    redirect("/");
-  }, [get, token]);
+  }, [get, token, dispatch]);
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
       <MainLoader />
