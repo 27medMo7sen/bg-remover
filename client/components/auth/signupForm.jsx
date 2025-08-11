@@ -12,7 +12,8 @@ import { useHttp } from "@/hooks/useHttp";
 import { openDrawer } from "@/lib/slices/uiSlice";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "@/lib/slices/authSlice";
-
+import { redirect } from "next/navigation";
+import { useEffect } from "react";
 export default function SignupForm() {
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
