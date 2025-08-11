@@ -41,6 +41,7 @@ export default function MainLayout({ children }) {
   }, []);
 
   React.useEffect(() => {
+    setIsLoading(true);
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
 
