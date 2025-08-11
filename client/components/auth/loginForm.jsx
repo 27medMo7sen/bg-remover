@@ -6,7 +6,7 @@ import { FaGoogle } from "react-icons/fa";
 import Link from "next/link";
 import { RiEyeLine } from "react-icons/ri";
 import { RiEyeOffLine } from "react-icons/ri";
-import React from "react";
+import React, { useEffect } from "react";
 import useInput from "@/hooks/useInput";
 import { useHttp } from "@/hooks/useHttp";
 import { redirect } from "next/navigation";
@@ -14,10 +14,13 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "@/lib/slices/authSlice";
 
 export default function LoginForm() {
+
   const [showPassword, setShowPassword] = React.useState(false);
   const { post } = useHttp();
   const dispatch = useDispatch();
-
+  useEffect(() => {
+    document.title = "Login Page";
+  }, []);
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
