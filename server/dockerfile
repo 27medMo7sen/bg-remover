@@ -18,16 +18,18 @@ WORKDIR /app
 COPY requirements.txt ./
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-# Copy package files and install Node.js dependencies
+# Copy package files and install Node.js dependencies with cache
 COPY package*.json ./
-
-# Install dependencies and try to fix vulnerabilities safely
-RUN npm ci --only=production && \
-    npm audit fix || true && \
+RUN --mount=type=cache,target=/root/.npm \
+    npm ci --only=production && \
+    npm audit fix --force && \
     npm cache clean --force
 
 # Copy application source code
 COPY . .
+
+# If you need to build the application, do it here
+# RUN npm run build
 
 # Create non-root user for security
 RUN groupadd -r appgroup && useradd -r -g appgroup appuser && \
