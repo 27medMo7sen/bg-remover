@@ -15,9 +15,7 @@ export const useHttp = () => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
     axios.defaults.headers.post["Content-Type"] = "application/json";
-    axios.defaults.baseURL =
-      process.env.NEXT_PUBLIC_API_URL ||
-      "https://bg-remover-production-28c9.up.railway.app";
+    axios.defaults.baseURL = process.env.NEXT_PUBLIC_SERVER_URL;
   }, []);
 
   const [isLoading, setIsLoading] = React.useState(false);

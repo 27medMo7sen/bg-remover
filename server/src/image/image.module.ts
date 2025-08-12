@@ -6,6 +6,7 @@ import { ImageSchema } from './image.model';
 import { CloudinaryProvider } from 'src/providers/cloudinary.provider';
 import { CloudinaryModule } from 'src/cloudinary/cloudinary.module';
 import { AuthModule } from 'src/auth/auth.module';
+
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: 'Image', schema: ImageSchema }]),

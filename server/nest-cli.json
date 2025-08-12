@@ -3,7 +3,7 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "compilerOptions": {
-    "assets": ["**/*.pug", "mail/templates/**/*"],
+    "assets": ["**/*.pug", "mail/templates/**/*", "**/*.py"],
     "deleteOutDir": true
   }
 }

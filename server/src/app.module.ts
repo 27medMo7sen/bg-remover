@@ -16,10 +16,10 @@ import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
         transport: {
           host: configService.get<string>('MAIL_HOST'),
           port: configService.get<number>('MAIL_PORT'),
-          secure: configService.get<boolean>('MAIL_SECURE'), // true for 465, false for other ports
+          secure: configService.get<boolean>('MAIL_SECURE'),
           auth: {
             user: configService.get<string>('MAIL_USER'),
-            pass: configService.get<string>('MAIL_PASSWORD'), // use an App Password if using Gmail with 2FA
+            pass: configService.get<string>('MAIL_PASSWORD'),
           },
         },
         defaults: {
@@ -37,6 +37,7 @@ import { PugAdapter } from '@nestjs-modules/mailer/dist/adapters/pug.adapter';
     }),
     MailModule,
     ConfigModule.forRoot({
+      envFilePath: [`.env.${process.env.NODE_ENV}`],
       isGlobal: true,
       cache: true,
     }),
