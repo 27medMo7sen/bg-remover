@@ -1,0 +1,5 @@
+torch
+torchvision
+pillow
+transformers>=4.26
+scikit-image
