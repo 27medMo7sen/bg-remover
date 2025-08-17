@@ -16,8 +16,8 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Install Node dependencies
 COPY package*.json ./
-RUN --mount=type=cache,target=/root/.npm \
-    npm ci --only=production && \
+RUN --mount=type=cache,id=npm,target=/root/.npm \
+    npm install \
     npm cache clean --force
 
 
