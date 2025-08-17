@@ -59,7 +59,7 @@ export default function LoginForm() {
   };
 
   const isFormValid = isEmailValid && isPasswordValid;
-
+  console.log(`${process.env.NEXT_PUBLIC_SERVER_URL}/auth/google`);
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <form
