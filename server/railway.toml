@@ -1,6 +1,6 @@
 [build]
 builder = "DOCKERFILE"
-duckerfilepath = "/server/Dockerfile.railway"
+duckerfilepath = "/server/Dockerfile"
 
 [deploy]
 healthcheckPath = '/ping'
