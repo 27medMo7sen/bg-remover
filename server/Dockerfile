@@ -1,5 +1,5 @@
 FROM node:20-bullseye-slim
- 
+
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
@@ -8,21 +8,20 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
- 
+
 WORKDIR /app
- 
+
 COPY requirements.txt ./
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-# Install Node dependencies
+# Install Node dependencies with cache
 COPY package*.json ./
-RUN --mount=type=cache,id=npm,target=/root/.npm \
-    npm install \
+RUN --mount=type=cache,id=npm-cache,target=/root/.npm \
+    npm ci --only=production && \
     npm cache clean --force
 
-
 COPY . .
- 
+
 RUN groupadd -r appgroup && useradd -r -g appgroup appuser && \
     chown -R appuser:appgroup /app
 USER appuser
