@@ -1,6 +1,5 @@
 FROM node:20-bullseye-slim
-
-# Install system dependencies
+ 
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
@@ -9,11 +8,9 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
-
-# Create app directory
+ 
 WORKDIR /app
-
-# Install Python dependencies
+ 
 COPY requirements.txt ./
 RUN pip3 install --no-cache-dir -r requirements.txt
 
@@ -24,13 +21,8 @@ RUN --mount=type=cache,target=/root/.npm \
     npm audit fix --force && \
     npm cache clean --force
 
-# Copy application source
 COPY . .
-
-# Build the app if needed
-# RUN npm run build
-
-# Set up non-root user
+ 
 RUN groupadd -r appgroup && useradd -r -g appgroup appuser && \
     chown -R appuser:appgroup /app
 USER appuser
