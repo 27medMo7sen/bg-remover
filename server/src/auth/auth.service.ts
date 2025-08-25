@@ -114,7 +114,7 @@ export class AuthService {
     token = this.jwtService.sign({ userId: user._id, email: user.email });
     const userUpdate = await this.authModel.findOneAndUpdate(
       { email: _json.email },
-      { token, secureURL: _json.picture, username: _json.name.split(' ')[0] },
+      { token },
       { new: true },
     );
     return userUpdate;
