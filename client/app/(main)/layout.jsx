@@ -105,10 +105,10 @@ export default function MainLayout({ children }) {
                 </span>
                 {user.secureURL ? (
                   <Image
+                    height={32}
+                    width={32}
                     src={user.secureURL}
                     alt="profile"
-                    width={32}
-                    height={32}
                     className="w-8 h-8 rounded-full"
                   />
                 ) : (

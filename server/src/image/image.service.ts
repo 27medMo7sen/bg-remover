@@ -107,4 +107,23 @@ export class ImageService {
 
     return image;
   }
+  async uploadProfilePic(file: any) {
+    const user = await this.authModel.findOne({ _id: file.user.userId });
+    console.log('user:', user);
+    if (user) {
+      console.log('this is the file:', file);
+      const formData = new FormData();
+      const cloudinaryRet = await this.cloudinaryService.uploadFile(file);
+      console.log(cloudinaryRet);
+      const user = this.authModel.findOneAndUpdate(
+        { _id: file.user.userId },
+        { $set: { secureURL: cloudinaryRet.secure_url } },
+        { new: true },
+      );
+      return user;
+    }
+  }
+  async getUserImages(user: any) {
+    return await this.imageModel.find({ user: user.userId });
+  }
 }

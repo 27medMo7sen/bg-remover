@@ -33,8 +33,17 @@ const authSlice = createSlice({
         "Authorization"
       ] = `Bearer ${action.payload}`;
     },
+    setProfilePicture: (state, action) => {
+      state.user = { ...state.user, secureURL: action.payload };
+      localStorage.setItem("user", JSON.stringify(state.user));
+    },
   },
 });
-export const { setCredentials, clearCredentials, setUser, setToken } =
-  authSlice.actions;
+export const {
+  setCredentials,
+  clearCredentials,
+  setUser,
+  setToken,
+  setProfilePicture,
+} = authSlice.actions;
 export default authSlice.reducer;

@@ -5,6 +5,7 @@ import {
   UseInterceptors,
   Req,
   UseGuards,
+  Get,
 } from '@nestjs/common';
 import { ImageService } from './image.service';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -29,5 +30,27 @@ export class ImageController {
       ...file,
       user: req.user,
     });
+  }
+
+  @Post('profile-pic')
+  @UseInterceptors(FileInterceptor('file'))
+  @UseGuards(AuthGuard)
+  async uploadProfilePic(
+    @UploadedFile() file: Express.Multer.File,
+    @Req() req: any,
+  ) {
+    if (!file) {
+      throw new Error('No file uploaded');
+    }
+    return await this.imageService.uploadProfilePic({
+      ...file,
+      user: req.user,
+    });
+  }
+
+  @Get('/user-images')
+  @UseGuards(AuthGuard)
+  async getUserImages(@Req() req: any) {
+    return await this.imageService.getUserImages(req.user);
   }
 }
